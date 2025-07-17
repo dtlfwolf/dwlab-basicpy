@@ -1,17 +1,15 @@
-# dwlab-cmkapi
+# dwlab-basicpy
 
-> 🛠️ A Python library by DW-Lab GmbH to manage and automate Checkmk environments.
+> 🛠️ A Python library by DW-Lab GmbH implementing basic services required by any DW-Lab Python implementation.
 
-`dwlab-cmkapi` provides a simple and extensible Python interface to interact with Checkmk servers, manage monitoring configurations, schedule backups, and integrate Checkmk operations into your custom workflows.
+`dwlab-basicpy` is a Python library that provides a set of basic services required by any DW-Lab Python implementation. It includes modules for reading DW-Lab basic settings (yaml or xml style), logging enviroment implementation and provides information about the OS we run on.
 
 ---
 
 ## ✨ Features
 
-- Connect to and authenticate with Checkmk servers
-- Automate host and service management
-- Schedule and execute backup jobs
-- Integrate with existing Python systems or automation pipelines
+- Logger setup
+- Runtime Environment information
 - Modular design for easy extension
 
 ---

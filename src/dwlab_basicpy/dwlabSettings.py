@@ -4,7 +4,7 @@ import sys
 import logging
 import yaml
 import xml.etree.ElementTree as ET
-from dwlabObjectHandler import dictToObject
+from dwlab_basicpy import dwlabObjectHandler
 
 
 
@@ -180,7 +180,7 @@ class dwlabSettings:
 
         logger.debug("variableName="+str(variableName))
         
-        object=dictToObject(self.data)
+        object=dwlabObjectHandler.dictToObject(self.data)
         if hasattr(object, variableName):
             logger.debug("variableName "+str(variableName)+" exists")
             variable=getattr(object, variableName)

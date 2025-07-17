@@ -4,8 +4,8 @@ import socket
 import sys
 
 import logging
-from dwlabLoggerSetup import setup_logging
-setup_logging()
+from dwlab_basicpy import dwlabLogger as dwlabLogger
+dwlabLogger.setup_logging()
 logger=logging.getLogger(__name__)
 
 

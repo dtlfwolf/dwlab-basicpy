@@ -1,5 +1,5 @@
-import dwlabLoggerSetup
-import dwlabObjectHandler
-import dwlabRuntimeEnvironment
-import dwlabSettingsFile
-import dwlabSetup
+from .dwlabLogger import *
+from .dwlabObjectHandler import *
+from .dwlabRuntimeEnvironment import *
+from .dwlabSettings import *
+from .dwlabSetup import *
