@@ -28,12 +28,27 @@ class dwlabRuntimeEnvironment:
         stack=inspect.stack()
         callerFrame=stack[1]
         callingModule=callerFrame.filename
-        self._dwlab_src_home=Path(callingModule).resolve().parent
+        if dwlab_src_home is not None:
+            self._dwlab_src_home=dwlab_src_home
+        else:
+            self._dwlab_src_home=Path(callingModule).resolve().parent
         logger.debug("DW-Lab: dwlab_src_home="+str(self._dwlab_src_home))
 
-        self._dwlab_package_home=Path(self._dwlab_src_home).parent
+        if dwlab_package_home is not None:
+            self._dwlab_package_home=dwlab_package_home
+        else:
+            self._dwlab_package_home=Path(self._dwlab_src_home).parent
         logger.debug("DW-Lab: dwlab_package_home="+str(self.dwlab_package_home))
-        self._dwlab_package=Path(self._dwlab_package_home).name
+        
+        if dwlab_package is not None:
+            self._dwlab_package=dwlab_package
+        else:
+            if self._dwlab_package_home.is_dir():
+                self._dwlab_package=Path(self._dwlab_package_home).name
+            else:
+                logger.error("Cannot determine dwlab_package from dwlab_package_home.")
+                raise RuntimeError("Cannot determine dwlab_package from dwlab_package_home.")
+        logger.debug("DW-Lab: dwlab_package="+str(self._dwlab_package))
 
         self._dwlab_home=Path(self._dwlab_package_home).parent
         if dwlab_home is not None:
