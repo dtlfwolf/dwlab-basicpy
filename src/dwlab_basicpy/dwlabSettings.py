@@ -34,10 +34,15 @@ class dwlabSettings:
         class_name=cls.__class__.__name__
         function_name=class_name+"."+function_name
         logger.debug("Entering function "+str(function_name))
+        
+        try:
+            with open(file_path, 'r') as yaml_file:
+                data = yaml.safe_load(yaml_file)
+            logger.info(f"Data successfully loaded from {file_path}.")
 
-        with open(file_path, 'r') as yaml_file:
-            data = yaml.safe_load(yaml_file)
-        logger.info(f"Data successfully loaded from {file_path}.")
+        except Exception as e:
+            logger.error(f"Error loading YAML data from {file_path}: {e}")
+            raise e
 
         logger.debug("Leaving function "+str(function_name))
         return cls(data)

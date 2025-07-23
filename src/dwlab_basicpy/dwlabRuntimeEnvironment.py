@@ -1,5 +1,14 @@
 import inspect
 from pathlib import Path
+import platform
+
+if platform.system() == "Windows":
+    # On Windows, use something like C:\dwlab or from environment
+    __DWLAB_HOME__ = Path("C:/dwlab").resolve()
+else:
+    # On Unix-like, use absolute /opt/dwlab
+    __DWLAB_HOME__ = Path("/opt/dwlab").resolve()
+
 import socket 
 import sys
 
@@ -15,7 +24,6 @@ class dwlabRuntimeEnvironment:
             dwlab_src_home=None,
             dwlab_package_home=None,
             dwlab_package=None,
-            dwlab_home=None,
             hostname=None,
             fqdn=None,
             hostIP=None
@@ -51,15 +59,16 @@ class dwlabRuntimeEnvironment:
         logger.debug("DW-Lab: dwlab_package="+str(self._dwlab_package))
 
         self._dwlab_home=Path(self._dwlab_package_home).parent
-        if dwlab_home is not None:
-            if self._dwlab_home != dwlab_home:
-                logger.error("Given dwlab_home does not match actual dwlab_home.")
-                logger.error("Given dwlab_home: "+str(dwlab_home))
-                logger.error("Actual dwlab_home: "+str(self))
-                logger.error("Using actual dwlab_home.")
-                logger.error("Please check your code.")
-                raise RuntimeError("Given dwlab_home does not match actual dwlab_home.")
-        logger.debug("DW-Lab: dwlab_home="+str(self.dwlab_home))
+        if self._dwlab_home != __DWLAB_HOME__:
+            logger.warning("Given dwlab_home does not match actual __DWLAB_HOME__.")
+            logger.warning("Given dwlab_home: "+str(self._dwlab_home))
+            logger.warning("Expected dwlab_home: "+str(__DWLAB_HOME__))
+            logger.warning("Using expected __DWLAB_HOME__.")
+            logger.warning("Please check your client code location.")
+            logger.warning("Expecting settings in "+str(__DWLAB_HOME__) + "<PackageName>/etc/*.yaml")
+            self._dwlab_home=__DWLAB_HOME__
+            #raise RuntimeError("Given dwlab_home does not match actual dwlab_home.")
+        logger.debug("DW-Lab: dwlab_home="+str(self._dwlab_home))
 
         self._hostname=socket.gethostname()
         if hostname is not None:
@@ -144,7 +153,6 @@ class dwlabRuntimeEnvironment:
         dwlab_src_home=Path(env_dict["dwlab_src_home"])
         dwlab_package_home=Path(env_dict["dwlab_package_home"])
         dwlab_package=env_dict["dwlab_package"]
-        dwlab_home=Path(env_dict["dwlab_home"])
         hostname=env_dict["hostname"]
         fqdn=env_dict["fqdn"]
         hostIP=env_dict["hostIP"]
@@ -154,7 +162,6 @@ class dwlabRuntimeEnvironment:
             dwlab_src_home=dwlab_src_home,
             dwlab_package_home=dwlab_package_home,
             dwlab_package=dwlab_package,
-            dwlab_home=dwlab_home,
             hostname=hostname,
             fqdn=fqdn,
             hostIP=hostIP
