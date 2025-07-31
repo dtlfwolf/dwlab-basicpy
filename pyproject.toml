@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "dwlab_basicpy"
-version = "0.6.43"
+version = "0.6.45"
 description = "DW-Lab Basic Python Services"
 readme = "README.md"
 license = { file = "LICENSE" }
@@ -16,7 +16,7 @@ requires-python = ">=3.8"
 dependencies = []
 
 [project.urls]
-Homepage = "https://github.com/dtlfwolf/dwlab-cmkapi"
+Homepage = "https://github.com/dtlfwolf/dwlab-basicpy"
 
 [tool.setuptools.packages.find]
 where = ["src"]
