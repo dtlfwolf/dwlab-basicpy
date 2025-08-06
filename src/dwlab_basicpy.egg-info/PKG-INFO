@@ -1,6 +1,6 @@
 Metadata-Version: 2.4
 Name: dwlab_basicpy
-Version: 0.6.43
+Version: 0.6.45
 Summary: DW-Lab Basic Python Services
 Author-email: Detlef Wolf <detlef.wolf@dw-lab.de>
 License: Copyright (c) 2025 DW-Lab GmbH
@@ -685,7 +685,7 @@ License: Copyright (c) 2025 DW-Lab GmbH
         the library.  If this is what you want to do, use the GNU Lesser General
         Public License instead of this License.  But first, please read
         <https://www.gnu.org/licenses/why-not-lgpl.html>.
-Project-URL: Homepage, https://github.com/dtlfwolf/dwlab-cmkapi
+Project-URL: Homepage, https://github.com/dtlfwolf/dwlab-basicpy
 Requires-Python: >=3.8
 Description-Content-Type: text/markdown
 License-File: LICENSE
