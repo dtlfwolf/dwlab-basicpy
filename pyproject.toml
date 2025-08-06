@@ -1,3 +1,8 @@
+
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
 [build-system]
 requires = ["setuptools>=61.0"]
 build-backend = "setuptools.build_meta"
@@ -9,17 +14,16 @@ description = "DW-Lab Basic Python Services"
 readme = "README.md"
 license = { file = "LICENSE" }
 authors = [
-    { name = "Detlef Wolf", email = "detlef.wolf@dw-lab.de" },
+    { name = "Detlef Wolf", email = "detlef.wolf@dw-lab.de" }
 ]
-packages = ["dwlab_basicpy"]
-
 requires-python = ">=3.8"
-
 dependencies = []
 
 [project.urls]
 Homepage = "https://github.com/dtlfwolf/dwlab-basicpy"
 
+[tool.setuptools]
+packages = { find = {} }
 
 [tool.setuptools.packages.find]
 where = ["src"]
