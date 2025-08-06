@@ -18,5 +18,8 @@ dependencies = []
 [project.urls]
 Homepage = "https://github.com/dtlfwolf/dwlab-basicpy"
 
+[tool.setuptools]
+packages = { find = {} }
+
 [tool.setuptools.packages.find]
 where = ["src"]
