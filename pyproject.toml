@@ -11,6 +11,8 @@ license = { file = "LICENSE" }
 authors = [
     { name = "Detlef Wolf", email = "detlef.wolf@dw-lab.de" },
 ]
+packages = ["dwlab_basicpy"]
+
 requires-python = ">=3.8"
 
 dependencies = []
